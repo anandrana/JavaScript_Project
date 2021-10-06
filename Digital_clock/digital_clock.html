@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Digital Clock</title>
+	<link rel="stylesheet" href="">
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+	<style type="text/css">
+
+	body{
+		background: black;
+		padding: 0;
+		margin: 0;
+		color: red;
+		font-family: 'Orbitron', sans-serif;
+	}
+
+	.container{
+		width: 100%;
+		height: 80vh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.clock{
+		font-size: 110px;
+		border: 5px solid red;
+		padding: 10px;
+
+	}
+</style>
+</head>
+<body>
+	<h1 style="text-align: center;">We are Making Digital Clock here</h1>
+
+	<div class="container">
+		<h1 class="clock">3:15 AM</h1>
+	</div>	
+
+	<script type="text/javascript">
+		
+		const getTime=()=>{
+			let d=new Date();
+
+			let h=d.getHours();
+			
+			let amPM = h>=12 ? "PM" :"AM"
+			h=h%12
+			h= h == 0 ? 12 : h
+
+			let m=d.getMinutes();
+
+			m = m > 9 ? m : "0" + m;
+
+			let s=d.getSeconds();
+
+			s = s > 9 ? s : "0" + s;
+
+			let milliSec=d.getMilliseconds();
+
+			return `${h} : ${m} : ${s} : ${milliSec} : ${amPM}` ;
+
+			// with the help of inbuild function we can also change 
+			// d.toLocaleTimeString();
+
+		}
+
+		setInterval(()=>{
+
+			let clockObj=document.querySelector('.clock')
+			clockObj.innerHTML=getTime();
+
+		},1000);
+
+		
+
+	</script>
+</body>
+</html>
